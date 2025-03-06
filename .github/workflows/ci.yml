@@ -1,19 +1,12 @@
-name: CI
-
-on: [push, pull_request]
-
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout repository
+      uses: actions/checkout@v2
 
-    - name: Install dependencies
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y gcc-mingw-w64
+    - name: Install SDL2
+      run: sudo apt-get install -y libsdl2-dev
 
-    - name: Build
-      run: |
-        gcc rotating_cube.c -o rotating_cube.exe -I"/usr/include/SDL2" -Dmain=SDL_main -lmingw32 -lSDL2main -lSDL2
+    - name: Build the project
+      run: gcc rotating_cube.c -o rotating_cube.exe -I"/usr/include/SDL2" -Dmain=SDL_main -lmingw32 -lSDL2main -lSDL2
