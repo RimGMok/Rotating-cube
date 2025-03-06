@@ -1,14 +1,13 @@
 CC = gcc
-CFLAGS = -I"C:\mingw64\x86_64-w64-mingw32\include"
-LDFLAGS = -L"C:\mingw64\x86_64-w64-mingw32\lib" -lmingw32 -lSDL2main -lSDL2
-
-TARGET = rotating_cube.exe
+CFLAGS = -I"/usr/include/SDL2"
+LDFLAGS = -lSDL2
+TARGET = rotating_cube
 SRC = rotating_cube.c
 
 all: $(TARGET)
 
 $(TARGET): $(SRC)
-	$(CC) $(SRC) -o $(TARGET) $(CFLAGS) $(LDFLAGS)
+    $(CC) $(SRC) -o $(TARGET) $(CFLAGS) $(LDFLAGS)
 
 clean:
-	rm -f $(TARGET)
+    rm -f $(TARGET)
